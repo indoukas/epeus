@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>A Trojan Cycle for Late Antiquity</title>
+<link rel="stylesheet" href="styles.css" />
+<style>
+
+#map {
+	border: none;
+	width: 100%;
+	height: 100%;	
+}
+
+#map p {
+}
+
+#iwBox {
+	max-height: 300px;
+	font-family: Calibri;
+	font-size: 130%;
+	line-height: 140%;
+	color: #222;
+}
+
+</style>
+<script src="jquery-3.2.1.min.js"></script>
+<script src="jquery.scrollintoview.min.js"></script>
+<script>
+
+$(document).ready(function() {
+
+	jQuery.fn.scrollTo = function(elem, speed) { 
+		 $(this).animate({
+		     scrollTop:  $(this).scrollTop() - $(this).offset().top + $(elem).offset().top 
+		 }, speed == undefined ? 1000 : speed); 
+		 return this; 
+	};
+
+	/* special */
+	$(window).mousemove( function() {
+	});
+
+	$('a').click( function() {
+		var thisHref = $(this).attr('href');
+		if (thisHref.substr(0, 6) == '#comm_') {
+			// extract commentary item reference
+			var commID = thisHref.substr(-2, 2);
+			highlightMapMarker(commID);
+			highlightLinkCommentary(commID);
+		}
+	});
+});
+
+function highlightLinkCommentary(commID) {
+
+	// clear all highlights on lemmata
+	$('a[href^="#comm_"]').removeClass('lemmaHighlight');
+
+	// highlight links for this item	
+	$('a[href="#comm_' + commID + '"]').addClass('lemmaHighlight');
+<!--
+	// scroll all lemmata into view
+   $('a[href="#comm_' + commID + '"]').each( function() {
+      $('a[href="#comm_' + commID + '"]').parents('.textHolder').scrollTo('a[href="#comm_' + commID + '"]', 1500);
+   });
+
+	// clear all commentary
+	$('div[id^=comm_]').fadeOut('slow', function() {
+		// fade in commentary for this item
+		$('div[id=comm_' + commID + ']').fadeIn('slow'); 
+   });
+   
+  -->
+}
+
+</script>
+<script>
+
+var locations = [
+{ lat: 39.69936, lng: 26.85852, link: 'http://pleiades.stoa.org/places/550592', label: 'Mt. Ida', commID: '01', commText: '<p>The starting point of reference is Mountain Ida, the <i>locus amœnus</i> and wood-cutting landscape of the previous passages. This genitive plural is familiar from Homer, where, however, it always goes with a preposition. In ten Iliadic instances it usually marks a divine intervention or movement, towards Troy or Olympus. An interesting occurrence refers to the rivers (<cite>Il.</cite> <a href="http://cts.perseids.org/read/greekLit/tlg0012/tlg001/perseus-grc2/12.19-12.23">12.19</a>), connecting Ida and the sea in a similar way as the one we find in Colluthus.</p>' },
+{ lat: 40.15552, lng: 26.41271, link: 'http://pleiades.stoa.org/places/501434/', label: 'Hellespont', commID: '02', commText: '<p>Most references are connected to the location either as a setting for the Trojan War (Hom. <cite>Il.</cite> 10x, <cite>Od.</cite> 1x., QS 21x) or as a crossing point of the Argonauts on their way to Colchis (A.R. 1x, Orph. <cite>A.</cite> 2x). Vital to the understanding of the place name and its surrounding lines is the comparison with the epyllion <cite>Hero and Leander</cite> by Musaeus. Apart from a cluster of verbal parallels (for which see the corresponding chapter), the narrative context is also very much alike (a love story, set on the same stretch of water, as Leander is swimming across the straits every night, and under the shadow of Aphrodite, who incites and oversees these passions and whose priestess is Hero).</p>' },
+{ lat: 39.9577, lng: 26.23873, seaLat: 40.033706, seaLng: 26.074913, link: 'http://pleiades.stoa.org/places/550595', label: 'Ilium', commID: '03', commText: '<p>Dardania was considered a city on the slopes of Ida, founded by the eponymous hero, while Troy (or Ilium) was founded later in the plain (<cite>Il.</cite> <a href="http://cts.perseids.org/read/greekLit/tlg0012/tlg001/perseus-grc2/20.216-20.218">20.216-218</a>). The phrasing recalls the nocturnal crossing of the Hellespont by the Argonauts (A.R. <a href="http://cts.perseids.org/read/greekLit/tlg0001/tlg001/perseus-grc2/1.930-1.931">1.930-1</a>). This is a very reasonable analogy, and not only for the actual coordinates of the journeys, but also for their structure and connotations. In both cases, there is a specific objective, something or someone to be removed from its rightful place and claimed for another realm, which is also connected with the Greek-barbarian or East-West divide. D. is mentioned again at the end of the poem, when Paris and Helen safely reach Troy (Colluth. 390: <span lang="grc"> Δαρδανίης λιμένεσσιν ὁ νυμφίος ἤγαγε νύμφην</span>). Since D. was not on the coast, the noun <span lang="grc">λιμήν</span> should be understood as haven or refuge and not with its literal meaning of harbour. It is probable that the term, as well as <span lang="grc"> Τρώιον οὖδας</span>, had a generic meaning describing the whole area of the Troad. The latter is not a configuration found in Homer. Its association with an adjective denoting a place name is first found in tragedy (E. <cite>Ph.</cite> <a href="http://cts.perseids.org/read/greekLit/tlg0006/tlg015/perseus-grc2/982">982</a>), then in verse and prose geographical works (D. P. <a href="http://cts.perseids.org/read/greekLit/tlg0084/tlg001/1st1K-grc1/423">423</a>, Paus. <a href="http://cts.perseids.org/read/greekLit/tlg0525/tlg001/perseus-grc2/9.14.3">9.14.3.3</a>) and Quintus (6x) where originates the exact phrasing used by Colluthus.</p>' },
+{ seaLat: 40.802075, seaLng: 25.935159 },
+{ lat: 40.9973096, lng: 25.3111574, seaLat: 40.869756, seaLng: 25.116841, link: 'http://pleiades.stoa.org/places/501440', label: 'Lake Ismaris', commID: '04', commText: '<p>The unambiguously coastal journey moves on to Thrace (211-212). The Ismarian lake and the Pangaeon mountain are both mentioned in close sequence in Herodotus, as the 480 BC expedition of Xerxes passes by the area, thus providing a connection to the Persian Wars. The scarcity of other attestations, as far as the lake is concerned, along with the explicit connection of Pangaeon with Phyllis in Herodotus, allow us to consider that Colluthus might have been composing with that in mind (Hdt. <a href="http://cts.perseids.org/read/greekLit/tlg0016/tlg001/perseus-grc2/7.109-7.113">7.109-13</a>).</p><p>A similar itinerary is mentioned in Aeschylus (<cite>Pers.</cite> <a href="http://cts.perseids.org/read/greekLit/tlg0085/tlg002/opp-grc3/485-494">485-94</a>), during the messenger-scene recounting the defeated Persian army’s retreat from Greece. We find a close correspondence of the place names and in some cases a similar or identical wording.</p>' },
+{ lat: 40.9147201, lng: 24.09166, seaLat: 40.819214, seaLng: 24.463463, link: 'http://pleiades.stoa.org/places/501551', label: 'Mt. Pangaeon', commID: '05', commText: '<p>The unambiguously coastal journey moves on to Thrace (211-212). The Ismarian lake and the Pangaeon mountain are both mentioned in close sequence in Herodotus, as the 480 BC expedition of Xerxes passes by the area, thus providing a connection to the Persian Wars. The scarcity of other attestations, as far as the lake is concerned, along with the explicit connection of Pangaeon with Phyllis in Herodotus, allow us to consider that Colluthus might have been composing with that in mind (Hdt. <a href="http://cts.perseids.org/read/greekLit/tlg0016/tlg001/perseus-grc2/7.109-7.113">7.109-13</a>).</p><p>A similar itinerary is mentioned in Aeschylus (<cite>Pers.</cite> <a href="http://cts.perseids.org/read/greekLit/tlg0085/tlg002/opp-grc3/485-494">485-94</a>), during the messenger-scene recounting the defeated Persian army’s retreat from Greece. We find a close correspondence of the place names and in some cases a similar or identical wording.</p>' },
+{ seaLat: 40.068929, seaLng: 24.543114 },
+{ lat: 39.6, lng: 22.2, seaLat: 39.679812, seaLng: 22.943023, link: 'http://pleiades.stoa.org/places/1332', label: 'Thessaly', commID: '06', commText: '<p>It refers to Thessaly and presumably echoes its earlier attestation in the poem, in the genitive case and the same metrical position, as the setting of the marriage of Peleus and Thetis (Colluth. 17: <span lang="grc">ὑψιλόφοισιν ἐν οὔρεσιν Αἱ.</span>). The phrasing here implies a consistently coastal route. However, since the place name refers to a whole region, it is represented here in the map with the default position for Thessaly.</p>' },
+{ lat: 38.6523225739384, lng: 22.8270460003119, link: 'http://sws.geonames.org/6697800', label: 'Central and Southern Greece', commID: '07', commText: '<p>Α very usual generic term which corresponds to central and southern Greece or all the areas from which the Achaean army contingents in the Trojan expedition came.</p>' },
+{ seaLat: 39.224381, seaLng: 23.412552 },
+{ lat: 38.8678937, lng: 22.6337672, seaLat: 39.081325, seaLng: 23.291702, link: 'http://pleiades.stoa.org/places/541052', label: 'Phtia', commID: '08', commText: '<p>Probably singled out due to their connection with Achilles and Agamemnon, the antagonistic protagonists of the <cite>Iliad</cite>.</p>' },
+{ seaLat: 38.688297, seaLng: 24.195328 },
+{ seaLat: 38.138445, seaLng: 24.822922 },
+{ lat: 37.730833, lng: 22.756111, seaLat: 37.330109, seaLng: 23.678761, link: 'http://pleiades.stoa.org/places/570491', label: 'Mycenae', commID: '09', commText: '<p>Probably singled out due to their connection with Achilles and Agamemnon, the antagonistic protagonists of the <cite>Iliad</cite>.</p>' },
+{ lat: 37.9816702, lng: 21.8489331, link: 'http://pleiades.stoa.org/places/570238', label: 'Erymanthus', commID: '10', commText: '<p>This poses a problem, as far as the accuracy of the information is concerned. The river (or its namesake mountain) could not be visible from any marine route in the Aegean towards Sparta. For an argument reconciling the poetry and the facts, see the corresponding chapter. The literary precedent in this case is probably the combined reference to the mountains Taygetus and Erymanthus in the <cite>Odyssey</cite> where Nausicaa is likened to the huntress Artemis (<a href="http://cts.perseids.org/read/greekLit/tlg0012/tlg002/perseus-grc2/6.103">6.103</a>).</p>' },
+{ seaLat: 36.357166, seaLng: 23.250661 },
+{ seaLat: 36.467732, seaLng: 22.823536 },
+{ lat: 37.08149, lng: 22.42454, seaLat: 36.739858, seaLng: 22.602100, link: 'http://pleiades.stoa.org/places/570685', label: 'Sparta', commID: '11', commText: '<p>A close connection with Apollonius. Τhe perspective of the land seen from the sea, the figuration of the landscape and the vocabulary evoke a passage from the voyage of the Argo (<a href="http://cts.perseids.org/read/greekLit/tlg0001/tlg001/perseus-grc2/1.594-1.596">1.594-6</a>). Additionally, the participle <span lang="grc">κεκλιμένην</span>, otherwise used for women lying in bed, implies a metaphorical denotation of the city as a woman or even a sexual undertone, referring to Helen.</p>' },
+{ lat: 37.1615197, lng: 22.3334931, link: 'http://pleiades.stoa.org/places/570248', label: 'Eurotas', commID: '12', commText: '<p>The river commonly associated with Sparta. The phrasing, the noun <span lang="grc">ῥεέθρα</span> going with the name of the river in genitive, is quite common throughout the epic tradition.</p>' },
+{ lat: 37.066091, lng: 22.454127, link: 'http://pleiades.stoa.org/places/570723', label: 'Therapne', commID: '13', commText: '<p>Connected with the local cult of Helen, as it was the site of her alleged burial alongside Menelaus and of the shrine for her worship. Not coincidental, despite the fact that Helen of Therapne is the rehabilitated wife and not the eloping adulterer.</p>' }
+]
+// { lat: 37.0363, lng: 22.4502, link: 'http://pleiades.stoa.org/places/570074', label: 'Ἀμυκλαίων' }
+// { lat: , lng: , link: 'http://pleiades.stoa.org/places/536064', label: 'Ἀθηναίης' },
+
+var map, iw, connectLine, arrowSymbol;
+var landMarkers = new Array();
+var seaMarkers = new Array();
+var routeCoords = new Array;
+
+function initMap() {
+
+	// set up tiles from Imperium Romanum
+	var impMapType = new google.maps.ImageMapType({
+		getTileUrl: function(coord, zoom) {
+//			return "http://pelagios.org/tilesets/imperium/" + zoom + "/" + coord.x + "/" + coord.y + ".png";
+//			return "https://dare.ht.lu.se/tiles/imperium/" + zoom + "/" + coord.x + "/" + coord.y + ".png";		/* URL changed */
+			return "https://dh.gu.se/tiles/imperium/" + zoom + "/" + coord.x + "/" + coord.y + ".png";
+		},
+		tileSize: new google.maps.Size(256, 256),
+		isPng: true,
+		alt: "Imperium Romanum",
+		name: "Imperium",
+		minZoom: 3,
+		maxZoom: 11,
+		overviewMapControl: true
+	});
+
+	// create map
+	map = new google.maps.Map(document.getElementById("map"), {
+		disableDefaultUI: true,
+		zoomControl: true,
+		scaleControl: true,
+		zoomControlOptions: {
+			style: google.maps.ZoomControlStyle.SMALL
+		},
+		zoom: 7,
+		center: { lat: 38.883333, lng: 24.516667 }, // Skryos
+		mapTypeId: 'IMP'
+	});
+	map.mapTypes.set('IMP', impMapType);
+
+	// create blank information window
+	iw = new google.maps.InfoWindow({
+		pixelOffset: new google.maps.Size(0, -30),
+		maxWidth: 350
+	});
+
+	// create noveable polyline connector (between land and sea markers)
+	arrowSymbol = {
+          path: google.maps.SymbolPath.FORWARD_OPEN_ARROW
+        };
+	connectLine = new google.maps.Polyline({
+		strokeColor: '#000000',
+		strokeOpacity: 0.4,
+		strokeWeight: 4,
+		icons: [{
+         icon: arrowSymbol,
+         offset: '100%'
+		}],
+	});
+	connectLine.setMap(map);
+
+	// place markers
+	var lmi = 0; //	land marker index
+	var icon;
+	for (var i = 0; i < locations.length; i++) {
+
+		// if there are land co-ordinates, create a land marker
+		if (locations[i]['lat']) {
+			// determine icon
+			if (locations[i]['seaLat']) icon = 'http://maps.gstatic.com/mapfiles/ms2/micons/red-dot.png';
+			else icon = 'http://maps.gstatic.com/mapfiles/ms2/micons/red.png';
+
+			landMarkers[lmi] = new google.maps.Marker({ 
+				position: { lat: locations[i]['lat'], lng: locations[i]['lng'] },
+				map: map,
+				title: locations[i]['label'],
+				icon: icon
+			});
+			landMarkers[lmi].commID = locations[i]['commID'];
+			landMarkers[lmi].label = locations[i]['label'];
+			landMarkers[lmi].lat = locations[i]['lat'];
+			landMarkers[lmi].lng = locations[i]['lng'];
+			landMarkers[lmi].link = locations[i]['link'];
+			landMarkers[lmi].commText = locations[i]['commText'];
+
+			// land markers event handling
+			landMarkers[lmi].addListener('click', function() {
+				highlightMapMarker(this.commID);
+				highlightLinkCommentary(this.commID);
+			});
+		
+			// is there a sea marker for this land location?
+			if (locations[i]['seaLat']) {
+				seaMarkers[lmi] = new google.maps.Marker({ 
+					position: { lat: locations[i]['seaLat'], lng: locations[i]['seaLng'] },
+					map: map,
+					title: locations[i]['label'],
+					icon: 'paparis.png'
+				});
+				seaMarkers[lmi].commID = locations[i]['commID'];
+				seaMarkers[lmi].addListener('click', function() {
+					highlightMapMarker(this.commID);
+					highlightLinkCommentary(this.commID);
+				});
+			}
+			lmi ++;
+		}
+		// collect any sea markers coords for route line 		
+		if (locations[i]['seaLat']) routeCoords.push( { lat: locations[i]['seaLat'], lng: locations[i]['seaLng'] } );
+	}
+
+	// create polyline for route
+	var routeLine = new google.maps.Polyline({
+		path: routeCoords, 
+		strokeColor: '#0000ff',
+		strokeOpacity: 0.4,
+		strokeWeight: 4,
+		icons: [{
+         icon: arrowSymbol,
+         offset: '60%'
+		}],
+	});
+	routeLine.setMap(map);
+}
+
+function highlightMapMarker(commID) {
+	var content;
+	connectLine.setMap(null);
+
+	for (var i = 0; i < landMarkers.length; i++) {
+		// kill animation for associated sea marker, if any
+		if (seaMarkers[i]) seaMarkers[i].setAnimation(null);
+		
+		if (landMarkers[i].commID == commID) {
+			//	prepare info window
+			content = '<div id="iwBox"><h2>' + landMarkers[i].label + '</h2><p>';
+			if (i > 0) content += '<a href="#" onclick="highlightMapMarker(\'' + landMarkers[i - 1].commID + '\'); highlightLinkCommentary(\'' + landMarkers[i - 1].commID + '\'); ">🠘Prev.</a> | ';
+			if (i < landMarkers.length - 1) content += '<a href="#" onclick="highlightMapMarker(\'' + landMarkers[i + 1].commID + '\'); highlightLinkCommentary(\'' + landMarkers[i + 1].commID + '\'); ">Next🠚</a> | ';
+			content += '<a href="#" onclick="zoom(' + landMarkers[i].lat + ',' + landMarkers[i].lng + '); ">Zoom 🔍</a> | ';
+			content += '<a href="' + landMarkers[i].link + '" target="_blank">Place info 🛈</a></p>';
+			content += '<p>' + landMarkers[i].commText + '</p>';	
+			content += '</div>';
+
+			iw.setContent(content);
+			iw.setPosition(landMarkers[i].position);
+			iw.open(map);
+
+			// if there is a sea marker, draw connecting line and animate
+			if (seaMarkers[i]) {
+				connectLine.setPath( [ seaMarkers[i].position, landMarkers[i].position ] );
+				connectLine.setMap(map);
+				seaMarkers[i].setAnimation(google.maps.Animation.BOUNCE);
+				window.setTimeout(function(param1) {	
+					seaMarkers[param1].setAnimation(null);
+				}, 2900, i);
+			}
+//			map.panTo(landMarkers[i].position);
+//			map.setZoom(7);
+		}
+	}
+	return false;
+}
+
+function zoom(lat, lng) {
+	map.setZoom(10);
+	map.setCenter( { lat: lat, lng: lng } );
+	return false;
+}
+
+
+</script>
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDjX-C-nb55aL12LYMtz7DSg12doUy6rG8&callback=initMap"></script></head>
+<body>
+
+<div id="header">
+<h1><a href="index.html">A Trojan Cycle for Late Antiquity</a></h1>
+<a href="paris_intro.html">Journey of Paris</a> |
+<a href="horse_intro.html">Trojan Horse</a> |
+<a href="technical_details.html">Technical Details</a> 
+</div>
+
+
+<div id="text01heading">
+<h1>Colluthus, <i>The Abduction of Helen</i> 201–229</h1>
+</div>
+
+<div id="text01" class="textHolder map">
+
+<div class="lineno">201</div>
+<div class="text" lang="grc">ἄρτι μὲν <a href="#comm_01">Ἰδαίων ὀρέων</a> ἠλλάξατο πόντον</div> 
+<div class="lineno">202</div>	
+<div class="text" lang="grc">καὶ λεχέων ἐπίκουρον ἐφεσπομένην Ἀφροδίτην</div> 
+<div class="lineno">203</div>
+<div class="text" lang="grc">πολλάκις ἀκταίοισιν ἱλασσάμενος θυέεσσιν</div> 
+<div class="lineno">204</div>
+<div class="text" lang="grc">ἔπλεεν <a href="#comm_02">Ἑλλήσποντον</a> ἐπ' εὐρέα νῶτα θαλάσσης,</div> 
+<div class="lineno">205</div>
+<div class="text" lang="grc">τῷ δὲ πολυτλήτων σημήια φαίνετο μόχθων.</div> 
+<div class="trans">And now he had just left the hills of Ida for the deep, and, after with many a sacrifice upon the shore he had besought the favour of Aphrodite that attended him to aid his marriage, he was sailing the Hellespont over the broad back of the sea, when to him there appeared a token of his laborious toils.</div>
+
+
+<div class="lineno">206</div>
+<div class="text" lang="grc">κυανέη μὲν ὕπερθεν ἀναθρῴσκουσα θάλασσα</div> 
+<div class="lineno">207</div>
+<div class="text" lang="grc">οὐρανὸν ὀρφναίων ἑλίκων ἐζώσατο δεσμῷ</div> 
+<div class="lineno">208</div>
+<div class="text" lang="grc">εἶθαρ ἀμιχθαλόεντος ἀπ' ἠέρος ὄμβρον ἱεῖσα,</div> 
+<div class="lineno">209</div>
+<div class="text" lang="grc">ἐκλύσθη δέ τε πόντος ἐρεσσομένων ἐρετάων.</div> 
+<div class="trans">The dark sea leapt aloft and girdled the heaven with a chain of dusky coils and straightway poured forth rain from the murky air, and the sea was turmoiled as the oarsmen rowed.</div>
+
+<div class="lineno">210</div>
+<div class="text" lang="grc">τόφρα δὲ <a href="#comm_03">Δαρδανίην καὶ Τρώιον οὖδας</a> ἀμείψας</div> 
+<div class="lineno">211</div>
+<div class="text" lang="grc"><a href="#comm_04">Ἰσμαρίδος</a> μεθέηκε παραπλώων στόμα λίμνης,</div> 
+<div class="lineno">212</div>
+<div class="text" lang="grc">αἶψα δὲ <a href="#comm_05">Θρηικίοιο μετ' οὔρεα Παγγαίοιο</a></div> 
+<div class="lineno">213</div>
+<div class="text" lang="grc">Φυλλίδις ἀντέλλοντα φιλήνορος ἔδρακε τύμβον</div>   
+<div class="lineno">214</div>
+<div class="text" lang="grc">καὶ δρόμον ἐννεάκυκλον ἀλήμονος εἶδε κελεύθου,</div> 
+<div class="lineno">215</div>
+<div class="text" lang="grc">ἔνθα διαστείχουσα κινύρεο, Φυλλίς, ἀκοίτην</div> 
+<div class="lineno">216</div>
+<div class="text" lang="grc">δεχνυμένη παλίνορσον ἀπήμονα Δημοφόωντα,</div> 
+<div class="lineno">217</div>
+<div class="text" lang="grc">ὁππότε νοστήσειεν Ἀθηναίης ἀπὸ δήμων.</div>
+<div class="trans">Then when he had passed Dardania and the land of Troy and, coasting along, left behind the mouth of the Ismarian lake, speedily, after the mountains of Thracian Pangaeon, he saw rising into view the tomb of Phyllis that loved her husband and the nine-circled course of her wandering path, where thou didst range and cry, Phyllis, waiting the safe return of thy husband Demophoon, when he should come back from the land of Athena.</div>
+
+<div class="lineno">218</div>
+<div class="text" lang="grc">τῷ δὲ βαθυκλήροιο διὰ <a href="#comm_06">χθονὸς Αἱμονιήων</a></div> 
+<div class="lineno">219</div>
+<div class="text" lang="grc">ἐξαπίνης ἀνέτελλεν <a href="#comm_07">Ἀχαιίδος ἄνθεα γαίης</a>,</div> 
+<div class="lineno">220</div>
+<div class="text" lang="grc"> <a href="#comm_08">Φθίη βωτιάνειρα</a> καὶ <a href="#comm_09">εὐρυάγυια Μυκήνη</a>.</div>
+<div class="lineno">221</div>
+<div class="text" lang="grc">ἔνθεν ἀνερχομένοιο παρ' εἰαμενὰς <a href="#comm_10">Ἐρυμάνθου</a></div> 
+<div class="lineno">222</div>
+<div class="text" lang="grc"><a href="#comm_11">Σπάρτην καλλιγύναικα</a>, φίλην πόλιν Ἀτρείωνος,</div> 
+<div class="lineno">223</div>
+<div class="text" lang="grc">κεκλιμένην ἐνόησεν ἐπ' <a href="#comm_12">Εὐρώταο</a> ῥεέθροις. </div> 
+<div class="trans">Then across the rich land of the Haemonians there suddenly arose upon his eyes the flowery Achaean land, Phthia, feeder of men, and Mycene of wide streets. Then past the marshes where Erymanthus rises he marked Sparta of fair women, the dear city of the son of Atreus, lying on the banks of the Eurotas.</div>
+
+<div class="lineno">224</div>
+<div class="text" lang="grc">ἄγχι δὲ ναιομένην ὑπὸ δάσκιον οὔρεος ὕλην</div> 
+<div class="lineno">225</div>
+<div class="text" lang="grc">γείτονα παπταίνων ἐρατὴν θηεῖτο <a href="#comm_13">Θεράπνην</a>.</div> 
+<div class="lineno">226</div>
+<div class="text" lang="grc">οὔπω κεῖθεν ἔην δολιχὸς πλόος, οὐδὲ γαλήνης</div> 
+<div class="lineno">227</div>
+<div class="text" lang="grc">δηρὸν ἐρεσσομένων ἠκούετο δοῦπος ἐρετμῶν,</div> 
+<div class="lineno">228</div>
+<div class="text" lang="grc">καὶ χθονὸς εὐκόλποισιν ἐπ' ἠιόνεσσι βαλόντες</div> 
+<div class="lineno">229</div>
+<div class="text" lang="grc">πείσματα νηὸς ἔδησαν, ὅσοις ἁλὸς ἔργα μεμήλει.</div>
+<div class="trans">And hard by, established under a hill’s shady wood, he gazed upon her neighbour, lovely Therapne. Thence they had not far to sail, nor was the noise of the oars rowing in the calm sea heard for long, when they cast the hawsers of the ship upon the shores of a fair gulf and made them fast, even they whose business was the works of the sea.</div>
+</div>
+
+<div id="text02heading">
+
+</div>
+
+<div id="text02" class="textHolder map">
+	<div id="map"></div>
+</div>
+<!--
+<div id="commentaryHolder">
+
+<div id="comm_01">
+
+<h2>Comment on <span lang="grc">Ἰδαίων ὀρέων</span></h2>
+
+<p>The starting point of reference is Mountain Ida, the <i>locus amœnus</i> and wood-cutting landscape of the previous passages. This genitive plural is familiar from Homer, where, however, it always goes with a preposition. In ten Iliadic instances it usually marks a divine intervention or movement, towards Troy or Olympus. An interesting occurrence refers to the rivers (<cite>Il.</cite> <a href="http://cts.perseids.org/read/greekLit/tlg0012/tlg001/perseus-grc2/12.19-12.23">12.19</a>), connecting Ida and the sea in a similar way as the one we find in Colluthus.</p>
+
+</div>
+
+<div id="comm_02">
+
+<h2>Comment on <span lang="grc">Ἑλλήσποντον</span></h2>
+
+<p>Most references are connected to the location either as a setting for the Trojan War (Hom. <cite>Il.</cite> 10x, <cite>Od.</cite> 1x., QS 21x) or as a crossing point of the Argonauts on their way to Colchis (A.R. 1x, Orph. <cite>A.</cite> 2x). Vital to the understanding of the place name and its surrounding lines is the comparison with the epyllion <cite>Hero and Leander</cite> by Musaeus. Apart from a cluster of verbal parallels (for which see the corresponding chapter), the narrative context is also very much alike (a love story, set on the same stretch of water, as Leander is swimming across the straits every night, and under the shadow of Aphrodite, who incites and oversees these passions and whose priestess is Hero).</p>
+
+</div>
+
+<div id="comm_03">
+
+<h2>Comment on <span lang="grc">Δαρδανίην καὶ Τρώιον οὖδας</span></h2>
+
+<p>Dardania was considered a city on the slopes of Ida, founded by the eponymous hero, while Troy (or Ilium) was founded later in the plain (<cite>Il.</cite> <a href="http://cts.perseids.org/read/greekLit/tlg0012/tlg001/perseus-grc2/20.216-20.218">20.216-218</a>). The phrasing recalls the nocturnal crossing of the Hellespont by the Argonauts (A.R. <a href="http://cts.perseids.org/read/greekLit/tlg0001/tlg001/perseus-grc2/1.930-1.931">1.930-1</a>). This is a very reasonable analogy, and not only for the actual coordinates of the journeys, but also for their structure and connotations. In both cases, there is a specific objective, something or someone to be removed from its rightful place and claimed for another realm, which is also connected with the Greek-barbarian or East-West divide. D. is mentioned again at the end of the poem, when Paris and Helen safely reach Troy (Colluth. 390: <span lang="grc"> Δαρδανίης λιμένεσσιν ὁ νυμφίος ἤγαγε νύμφην</span>). Since D. was not on the coast, the noun <span lang="grc">λιμήν</span> should be understood as haven or refuge and not with its literal meaning of harbour. It is probable that the term, as well as <span lang="grc"> Τρώιον οὖδας</span>, had a generic meaning describing the whole area of the Troad. The latter is not a configuration found in Homer. Its association with an adjective denoting a place name is first found in tragedy (E. <cite>Ph.</cite> 982), then in verse and prose geographical works (D. P. <a href="http://cts.perseids.org/read/greekLit/tlg0084/tlg001/1st1K-grc1/423">423</a>, Paus. <a href="http://cts.perseids.org/read/greekLit/tlg0525/tlg001/perseus-grc2/9.14.3">9.14.3.3</a>) and Quintus (6x) where originates the exact phrasing used by Colluthus.</p>
+
+</div>
+
+<div id="comm_04">
+
+<h2>Comment on <span lang="grc">Ἰσμαρίδος</span> and <span lang="grc">Θρηικίοιο μετ' οὔρεα Παγγαίοιο</span></h2>
+
+<p>The unambiguously coastal journey moves on to Thrace (211-212). The Ismarian lake and the Pangaeon mountain are both mentioned in close sequence in Herodotus, as the 480 BC expedition of Xerxes passes by the area, thus providing a connection to the Persian Wars. The scarcity of other attestations, as far as the lake is concerned, along with the explicit connection of Pangaeon with Phyllis in Herodotus, allow us to consider that Colluthus might have been composing with that in mind (Hdt. <a href="http://cts.perseids.org/read/greekLit/tlg0016/tlg001/perseus-grc2/7.109-7.113">7.109-13</a>).</p>
+<p>A similar itinerary is mentioned in Aeschylus (<cite>Pers.</cite> <a href="http://cts.perseids.org/read/greekLit/tlg0085/tlg002/opp-grc3/485-494">485-94</a>), during the messenger-scene recounting the defeated Persian army’s retreat from Greece. We find a close correspondence of the place names and in some cases a similar or identical wording.</p>
+
+</div>
+
+<div id="comm_05">
+
+<h2>Comment on <span lang="grc">χθονὸς Αἱμονιήων</span></h2>
+
+<p>It refers to Thessaly and presumably echoes its earlier attestation in the poem, in the genitive case and the same metrical position, as the setting of the marriage of Peleus and Thetis (Colluth. 17: <span lang="grc">ὑψιλόφοισιν ἐν οὔρεσιν Αἱ.</span>). The phrasing here implies a consistently coastal route. However, since the place name refers to a whole region, it is represented here in the map with the default position for Thessaly.</p>
+
+</div>
+
+<div id="comm_06">
+
+<h2>Comment on <span lang="grc">Ἀχαιίδος ἄνθεα γαίης</span></h2>
+
+<p>Α very usual generic term which corresponds to central and southern Greece or all the areas from which the Achaean army contingents in the Trojan expedition came.</p>
+
+</div>
+
+<div id="comm_07">
+
+<h2>Comment on <span lang="grc">Φθίη βωτιάνειρα</span> and <span lang=grc">εὐρυάγυια Μυκήνη</span></h2>
+
+<p>Probably singled out due to their connection with Achilles and Agamemnon, the antagonistic protagonists of the <cite>Iliad</cite>.</p>
+
+</div>
+
+<div id="comm_08">
+
+<h2>Comment on <span lang="grc">Ἐρυμάνθου</span></h2>
+
+<p>This poses a problem, as far as the accuracy of the information is concerned. The river (or its namesake mountain) could not be visible from any marine route in the Aegean towards Sparta. For an argument reconciling the poetry and the facts, see the corresponding chapter. The literary precedent in this case is probably the combined reference to the mountains Taygetus and Erymanthus in the <cite>Odyssey</cite> where Nausicaa is likened to the huntress Artemis (<a href="http://cts.perseids.org/read/greekLit/tlg0012/tlg002/perseus-grc2/6.103">6.103</a>).</p>
+
+</div>
+
+<div id="comm_09">
+
+<h2>Comment on <span lang="grc">Σπάρτην καλλιγύναικα</span></h2>
+
+<p>A close connection with Apollonius. Τhe perspective of the land seen from the sea, the figuration of the landscape and the vocabulary evoke a passage from the voyage of the Argo (<a href="http://cts.perseids.org/read/greekLit/tlg0001/tlg001/perseus-grc2/1.594-1.596">1.594-6</a>). Additionally, the participle <span lang="grc">κεκλιμένην</span>, otherwise used for women lying in bed, implies a metaphorical denotation of the city as a woman or even a sexual undertone, referring to Helen.</p>
+
+</div>
+
+<div id="comm_10">
+
+<h2>Comment on <span lang="grc">Εὐρώταο</span></h2>
+
+<p>The river commonly associated with Sparta. The phrasing, the noun <span lang="grc">ῥεέθρα</span> going with the name of the river in genitive, is quite common throughout the epic tradition.</p>
+
+</div>
+
+<div id="comm_11">
+
+<h2>Comment on <span lang="grc">Θεράπνην</span></h2>
+
+<p>Connected with the local cult of Helen, as it was the site of her alleged burial alongside Menelaus and of the shrine for her worship. Not coincidental, despite the fact that Helen of Therapne is the rehabilitated wife and not the eloping adulterer.</p>
+
+</div>
+
+</div>
+-->
+<!--
+<iframe src="https://www.google.com/maps/d/embed?mid=1Fd8QyMtV3_F-BMdxORTFvBJzIyx0mpZA" width="640" height="480"></iframe>
+-->
+
+<div id="overlay"><div id="overlayContent">Some content here</div><div id="overlayClose">[<a href="#" onclick="$('#overlay').fadeOut();">Close</a>]</div></div>
+
+</body>
+</html>

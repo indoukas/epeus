@@ -1,0 +1,203 @@
+@import url('https://fonts.googleapis.com/css?family=Alegreya');
+
+/* HTML styles */
+
+body {
+	font-family: Calibri, sans-serif;
+	color: #222;
+	font-size: 120%;
+	line-height: 140%;
+}
+
+h1 {
+	color: #444;
+	font-size: 130%;
+	padding: 0px;
+}
+#header h1 {
+	float: left;
+	padding: 0px 60px 0px 0px;
+	margin: 0px;
+}
+
+h2 {
+	font-size: 120%;
+}
+h2.intro {
+	font-size: 170%;
+}
+#commentaryHolder h2 {
+	display: inline;
+	padding: 4px 7px 4px 7px;
+	background-color: #faa;
+}
+
+h3 {
+	font-size: 110%;
+}
+a {
+	color: #227;
+}
+
+sup {
+	vertical-align: top; 
+	position: relative; 
+	top: -0.5em; 
+}
+
+/* layout styles */
+
+#header {
+	position: absolute;
+	top: 0px;
+	left: 0%;
+	right: 0%;
+
+	font-size: 110%;
+	color: #cccccc;
+	padding: 20px 0px 15px 30px;
+	background-color: #333333;
+
+}
+#header a {
+	color: #ffffff;
+	text-decoration: none;
+}
+
+#mainContent {
+	position: absolute;
+	top: 60px;
+	left: 20%;
+	right: 30%;
+	padding: 30px 0px 50px 30px;
+}
+#footer {
+	margin: 80px 0px 0px 0px;
+	border-top: solid 1px #999;
+	font-size: 85%;
+}	
+
+
+
+#text01heading {
+	position: absolute;
+	top: 60px;
+	left: 0%;
+	right: 50%;
+	height: 70px;
+	padding: 0px 0px 0px 30px;
+}
+#text01 {
+	position: absolute;
+	top: 110px;
+	left: 0px;
+	bottom: 25%;
+	right: 50%;
+	padding: 20px 0px 0px 0px;
+	overflow: scroll;
+}
+
+#text02heading {
+	position: absolute;
+	top: 60px;
+	left: 50%;
+	right: 0%;
+	height: 70px;
+	padding: 0px 0px 0px 30px;
+}
+#text02 {
+	position: absolute;
+	top: 110px;
+	left: 50%;
+	bottom: 25%;
+	right: 0%;
+	padding: 20px 0px 0px 0px;
+	overflow: scroll;
+}
+#text01.map, #text02.map {
+	bottom: 0;
+}
+
+
+#commentaryHolder {
+	position: absolute;
+	top: 75%;
+	left: 0%;
+	bottom: 0%;
+	right: 0%;
+	overflow: scroll;
+	padding: 10px 30% 20px 30px;
+
+	font-size: 90%;
+	color: #333;
+}
+#commentaryHolder > div {
+	display: none;
+}
+
+#div.figure {
+  float: right;
+  width: 30%;
+  text-align: center;
+  font-style: italic;
+  font-size: 80%;
+  text-indent: 0;
+  border: thin silver solid;
+  margin: 0.5em;
+  padding: 0.5em;
+}
+
+#overlay {
+   display: none;
+   position: absolute;
+   top: 20%;
+   bottom: 20%;
+   left: 20%;
+   right: 20%;
+   padding: 10px;
+
+   background-color: #fff;
+   border: solid 2px #666;
+   border-radius: 15px;
+   box-shadow: 5px 5px 25px #999999;
+}
+#overlayContent {
+}
+#overlayClose {
+   margin-top: 20px;
+   text-align: left;
+   position: absolute;
+   bottom: 10px;
+}
+
+/* layout for text */
+
+div.lineno {
+	float: left;
+	font-size: 70%;
+	color: #999;
+	padding: 4px 20px 0px 30px;
+}
+div.text {
+	font-size: 130%;
+	padding: 0px 0px 5px 30px;
+}
+div.trans {
+	font-size: 90%;
+	margin: 10px 10px 20px 100px;	
+}
+
+
+
+/* text styles */
+
+[lang="grc"] {
+	font-family: "Alegreya", sans-serif;
+}
+
+.lemmaHighlight {
+	background-color: #faa;
+	text-decoration: none;
+	}
+
+

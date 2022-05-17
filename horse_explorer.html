@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>A Trojan Cycle for Late Antiquity</title>
+<link rel="stylesheet" href="styles.css" />
+<script src="jquery-3.2.1.min.js"></script>
+<script src="jquery.scrollintoview.min.js"></script>
+<script>
+
+$(document).ready(function() {
+
+jQuery.fn.scrollTo = function(elem, speed) { 
+    $(this).animate({
+        scrollTop:  $(this).scrollTop() - $(this).offset().top + $(elem).offset().top 
+    }, speed == undefined ? 1000 : speed); 
+    return this; 
+};
+
+/* special */
+$(window).mousemove( function() {
+});
+
+
+	$('a').click( function() {
+
+		var thisHref = $(this).attr('href');
+		if (thisHref.substr(0, 6) == '#comm_') {
+
+			// extract commentary item reference
+			var commRef = thisHref.substr(-2, 2); 
+
+			// clear all highlights on lemmata
+			$('a[href^="#comm_"]').removeClass('lemmaHighlight');
+
+			// highlight links for this item	
+			$('a[href="' + thisHref + '"]').addClass('lemmaHighlight');
+
+			// scroll all lemmata into view
+         $('a[href="' + thisHref + '"]').each( function() {
+            $(this).parents('.textHolder').scrollTo(this, 1500);
+         });
+
+			// clear all commentary
+			$('div[id^=comm_]').fadeOut('slow', function() {
+   			// fade in commentary for this item
+   			$('div[id=comm_' + commRef + ']').fadeIn('slow'); 
+         });
+
+
+		}
+/*
+      else if (thisHref.substr(0, 40) == 'http://www.pmoran.ie/perseus/extract.php') {
+         $('#overlay').fadeIn();
+         $('#overlayContent').load('http://www.pmoran.ie/perseus/extract.php?text=Il.&book=5&linefrom=360&lineto=367');//
+         return false;
+      }
+*/
+	});
+});
+
+</script>
+</head>
+<body>
+
+<div id="header">
+<h1><a href="index.html">A Trojan Cycle for Late Antiquity</a></h1>
+<a href="paris_intro.html">Journey of Paris</a> |
+<a href="horse_intro.html">Trojan Horse</a> |
+<a href="technical_details.html">Technical Details</a>
+</div>
+
+
+
+<div id="text02heading">
+<h1>Triphiodorus, <i>The Sack of Troy</i> 57-105</h1>
+</div>
+
+<div id="text02" class="textHolder">
+
+<div class="lineno">57</div>
+<div class="text" lang="grc">ἤδη καὶ <a href="#comm_02">βουλῇσι θεῆς ὑποεργὸς</a> <a href="#comm_03">Ἐπειὸς</a></div>
+<div class="lineno">58</div>
+<div class="text" lang="grc">Τροίης <a href="#comm_04">ἐχθρὸν ἄγαλμα πελώριον ἵππον</a> <a href="#comm_03">ἐποίει</a>.</div> 
+<div class="trans">Now, too, by the counsel of the goddess her servant Epeius wrought the image that was the foe of Troy, even the giant horse.</div> 
+<div class="lineno">59</div>
+<div class="text" lang="grc">καὶ δὴ <a href="#comm_05">τέμνετο δοῦρα</a> καὶ ἐς πεδίον κατέβαινεν</div>
+<div class="lineno">60</div>
+<div class="text" lang="grc"><a href="#comm_43">Ἴδης</a> ἐξ αὐτῆς, ὁπόθεν καὶ πρόσθε Φέρεκλος</div>
+<div class="lineno">61</div>
+<div class="text" lang="grc">νῆας Ἀλεξάνδρῳ τεκτήνατο, <a href="#comm_44">πήματος ἀρχήν</a>.</div> 
+<div class="trans">And wood was cut and came down to the plain from Ida, even Ida whence formerly Phereclus built the ships for Alexander that were the beginning of woe.</div> 
+
+<div class="lineno">62</div>
+<div class="text" lang="grc"><a href="#comm_07">ποίει</a> δ' εὐρυτάτῃς μὲν ἐπὶ πλευρῇς ἀραρυῖαν</div>
+<div class="lineno">63</div>
+<div class="text" lang="grc">γαστέρα κοιλήνας, <a href="#comm_06">ὁπόσον</a> νεὸς ἀμφιελίσσης</div>
+<div class="lineno">64</div>
+<div class="text" lang="grc">ὀρθὸν ἐπὶ στάθμην μέγεθος τορνώσατο τέκτων.</div>
+<div class="lineno">65</div>
+<div class="text" lang="grc">αὐχένα δὲ <a href="#comm_45">γλαφυροῖσιν</a> ἐπὶ στήθεσσιν <a href="#comm_01">ἔπηξε</a></div>
+<div class="lineno">66</div>
+<div class="text" lang="grc"><a href="#comm_08">ξανθῷ</a> πορφυρόπεζαν ἐπιρρήνας τρίχα <a href="#comm_08">χρυσῷ·</a></div>
+<div class="trans">Fitted to broadest sides he made its hollow belly, in size as a curved ship which the carpenter turns true to the line. And the neck he fixed to carven breast and bespangled the purple-fringed mane with yellow gold;</div>
+
+<div class="lineno">67</div>
+<div class="text" lang="grc">ἡ δ' <a href="#comm_09">ἐπικυμαίνουσα μετήορος</a> <a href="#comm_10">αὐχένι κυρτῷ</a></div>
+<div class="lineno">68</div>
+<div class="text" lang="grc">ἐκ κορυφῆς λοφόεντι κατεσφρηγίζετο δεσμῷ.</div>
+<div class="lineno">69</div>
+<div class="text" lang="grc">ὀφθαλμοὺς δ' ἐνέθηκε <a href="#comm_46">λιθώπεας</a> ἐν δυσὶ κύκλοις</div>
+<div class="lineno">70</div>
+<div class="text" lang="grc">γλαυκῆς βηρύλλοιο καὶ αἱμαλέης ἀμεθύσσου·</div>
+<div class="lineno">71</div>
+<div class="text" lang="grc">τῶν δ' ἐπιμισγομένων διδύμης ἀμαρύγματι χροιῆς</div>
+<div class="lineno">72</div>
+<div class="text" lang="grc">γλαυκῶν φοινίσσοντο λίθων ἑλίκεσσιν ὀπωπαί.</div>
+<div class="trans">and the mane, waving aloft on the arched neck, was sealed on the head with crested band. In two circles he set the gem-like eyes of sea-green beryl and blood-red amethyst: and in the mingling of them a double colour flashed; the eyes were red and ringed with the green gems.</div>
+<div class="lineno">73</div>
+<div class="text" lang="grc">ἀργυφέους δ' ἐχάραξεν ἐπὶ γναθμοῖσιν ὀδόντας</div>
+<div class="lineno">74</div>
+<div class="text" lang="grc">ἄκρα δακεῖν σπεύδοντας ἐυστρέπτοιο χαλινοῦ·</div>
+<div class="lineno">75</div>
+<div class="text" lang="grc">καὶ στόματος μεγάλοιο λαθὼν ἀνέῳξε κελεύθους</div>
+<div class="lineno">76</div>
+<div class="text" lang="grc">ἀνδράσι κευθομένοισι <a href="#comm_12">παλίρροον ἆσθμα</a> φυλάσσων,</div>
+<div class="lineno">77</div>
+<div class="text" lang="grc">καὶ διὰ μυκτήρων <a href="#comm_12">φυσίζοος</a> ἔρρεεν <a href="#comm_12">ἀήρ</a>.</a></div>
+<div class="lineno">78</div>
+<div class="text" lang="grc">οὔατα δ' ἀκροτάτοισιν ἐπὶ κροτάφοισιν ἄρηρεν</div>
+<div class="lineno">79</div>
+<div class="text" lang="grc">ὀρθὰ μάλ', αἰὲν ἑτοῖμα μένειν σάλπιγγος ἀκουήν.</div>
+<div class="trans">In the jaws he set white rows of jagged teeth, eager to champ the ends of the well-twisted bit. And he opened secret paths in the mighty mouth to preserve the tide of breath for the men in hiding, and through the nostrils flowed the life-giving air. Ears were fixed on the top of its temples, pricked up, ever ready to await the sound of the trumpet.</div>
+
+<div class="lineno">80</div>
+<div class="text" lang="grc">νῶτα δ' ὁμοῦ λαγόνεσσι <a href="#comm_14">συνήρμοσε</a> καὶ ῥάχιν ὑγρήν,</div>
+<div class="lineno">81</div>
+<div class="text" lang="grc">ἰσχία δὲ γλουτοῖσιν ὀλισθηροῖσι συνῆψε.</div>
+<div class="lineno">82</div>
+<div class="text" lang="grc">σύρετο δὲ πρυμνοῖσιν ἐπ' ἴχνεσιν ἔκλυτος οὐρὴ</div>
+<div class="lineno">83</div>
+<div class="text" lang="grc">ἄμπελος ὣς γναμπτοῖσι καθελκομένη θυσάνοισιν.</div>
+<div class="trans">And back and flanks he fitted together and supple backbone, and joined hip-joint to smooth hip. Unto the heels of the feet trailed the flowing tail, even as vine weighed down with twisted tassels.</div>
+<div class="lineno">84</div>
+<div class="text" lang="grc">οἱ δὲ πόδες βαλίοισιν ἐπερχόμενοι γονάτεσσιν</div>
+<div class="lineno">85</div>
+<div class="text" lang="grc">εὔπτερον ὥσπερ ἔμελλον ἐπὶ δρόμον ὁπλίζεσθαι,</div>
+<div class="lineno">86</div>
+<div class="text" lang="grc">οὕτως ἠπείγοντο· μένειν δ' ἐκέλευεν ἀνάγκη.</div>
+<div class="lineno">87</div>
+<div class="text" lang="grc"><a href="#comm_11">οὐ</a> μὲν ὑπὸ κνήμῃσιν <a href="#comm_11">ἀχαλκέες</a> ἔξεχον ὁπλαί,</div>
+<div class="lineno">88</div>
+<div class="text" lang="grc">μαρμαρέης δ' ἑλίκεσσι κατεσφήκωντο χελώνης</div>
+<div class="lineno">89</div>
+<div class="text" lang="grc">ἁπτόμεναι πεδίοιο μόγις κρατερώνυχι χαλκῷ.</div>
+<div class="trans">And the feet that moved with the dappled knees – even as if they were about to set them to the winged race, so were they eager, yet constraint bade them bide. Not without bronze were the hooves that stood below the legs, but they were bound with spirals of shining tortoise and hardly touched the ground with the strong-hoofed bronze.</div>
+
+<div class="lineno">90</div>
+<div class="text" lang="grc">κληιστὴν δ' ἐνέθηκε θύρην καὶ κλίμακα τυκτήν,</div>
+<div class="lineno">91</div>
+<div class="text" lang="grc">ἡ μὲν ὅπως ἀίδηλος ἐπὶ πλευρῇς ἀραρυῖα</div>
+<div class="lineno">92</div>
+<div class="text" lang="grc">ἔνθα καὶ ἔνθα φέρῃσι λόχον κλυτόπωλον Ἀχαιῶν,</div>
+<div class="lineno">93</div>
+<div class="text" lang="grc">ἡ δ' ἵνα λυομένη τε καὶ ἔμπεδον εἰς ἓν ἰοῦσα</div>
+<div class="lineno">94</div>
+<div class="text" lang="grc">εἴη σφιν καθύπερθεν ὁδὸς καὶ νέρθεν ὀροῦσαι.</div>
+<div class="trans">Also he set therein a barred door and a fashioned ladder: the one that unseen, fitted to the sides, it might carry the Achaean company of the famous horse this way and that; the other that, unfolded and firmly put together, it might be for them a path whereby to speed upward or downward.</div> <div class="lineno">95</div>
+<div class="text" lang="grc">ἀμφὶ δέ μιν λευκοῖο κατ' <a href="#comm_33">αὐχένος</a> ἠδὲ γενείων</div>
+<div class="lineno">96</div>
+<div class="text" lang="grc">ἄνθεσι πορφυρέοισι πέριξ ἔζωσεν ἱμάντων</div>
+<div class="lineno">97</div>
+<div class="text" lang="grc">καὶ σκολιῇς ἑλίκεσσιν <a href="#comm_18">ἀναγκαίοιο χαλινοῦ</a></div>
+<div class="lineno">98</div>
+<div class="text" lang="grc">κολλήσας ἐλέφαντι καὶ <a href="#comm_19">ἀργυροδίνεϊ</a> χαλκῷ.</div>
+<div class="lineno">99</div>
+<div class="text" lang="grc">αὐτὰρ ἐπειδὴ πάντα <a href="#comm_47">κάμεν</a> μενεδήιον ἵππον,</div>
+<div class="lineno">100</div>
+<div class="text" lang="grc">κύκλον ἐυκνήμιδα ποδῶν ὑπέθηκεν ἑκάστῳ,</div>
+<div class="lineno">101</div>
+<div class="text" lang="grc">ἑλκόμενος πεδίοισιν ὅπως πειθήνιος εἴη</div>
+<div class="lineno">102</div>
+<div class="text" lang="grc">μηδὲ βιαζομένοισι δυσέμβατον οἶμον ὁδεύῃ.</div>
+<div class="trans">And he girt the horse about on white neck and cheeks with purple-flowered straps and coiling spirals of compelling bridle inlaid with ivory and silver-flashing bronze. And when he had wrought all the warlike horse, he set a well-spoked wheel under each of its feet that when dragged over the plain it might be obedient to the rein, and not travel a difficult path under stress of hands.</div>
+
+<div class="lineno">103</div>
+<div class="text" lang="grc"><a href="#comm_20">ὣς</a> ὁ μὲν <a href="#comm_13">ἐξήστραπτε</a> φόβῳ καὶ κάλλεϊ πολλῷ</div>
+<div class="lineno">104</div>
+<div class="text" lang="grc"><a href="#comm_15">εὐρύς θ' <a href="#comm_33">ὑψηλός</a> τε</a>· τὸν οὐδέ κεν ἀρνήσαιτο,</div>
+<div class="lineno">105</div>
+<div class="text" lang="grc"><a href="#comm_16">εἴ μιν ζωὸν ἔτετμεν</a>, ἐλαυνέμεν ἵππιος Ἄρης.</div>
+<div class="trans">So the horse flashed with terror and great beauty, wide and high; not even Ares, lord of horses, would have refused to drive it, had he found it alive.</div>
+
+</div>
+
+<div id="text01heading">
+<h1>Quintus of Smyrna, <i>Posthomerica</i> XII 104–156</h1>
+</div>
+
+<div id="text01" class="textHolder">
+
+<div class="lineno">104</div>
+<div class="text" lang="grc"><a href="#comm_21">ἦμος</a> δ' αἰγλήεντα περιστέφει οὐρανὸν ἄστρα</div>
+<div class="lineno">105</div>
+<div class="text" lang="grc">πάντοθε μαρμαίροντα, πόνου δ' ἐπιλήθεται ἀνήρ,</div>
+<div class="lineno">106</div>
+<div class="text" lang="grc">δὴ τότ' Ἀθηναίη μακάρων ἕδος αἰπὺ λιποῦσα</div>
+<div class="lineno">107</div>
+<div class="text" lang="grc">ἤλυθε παρθενικῇ ἀταλάφρονι πάντ' εἰκυῖα</div>
+<div class="lineno">108</div>
+<div class="text" lang="grc">ἐς νῆας καὶ λαόν· <a href="#comm_17">ἀρηιφίλου</a> δ' ἄρ' Ἐπειοῦ</div>
+<div class="lineno">109</div>
+<div class="text" lang="grc">ἔστη ὑπὲρ κεφαλῆς ἐν ὀνείρατι καί μιν ἀνώγει</div>
+<div class="lineno">110</div>
+<div class="text" lang="grc"><a href="#comm_18">τεῦξαι</a> <a href="#comm_22">δούριον ἵππον</a>· ἔφη δέ οἱ ἐγκονέοντι</div>
+<div class="lineno">111</div>
+<div class="text" lang="grc">αὐτὴ συγκαμέειν, αὐτὴ δ' ἄφαρ ἔνδοθι βῆναι,</div>
+<div class="lineno">112</div>
+<div class="text" lang="grc">ἔργον ἐς ὀτρύνουσα. Θεῆς δ' ὅ γε μῦθον ἀκούσας</div>
+<div class="lineno">113</div>
+<div class="text" lang="grc">καγχαλόων ἀνὰ θυμὸν ἀκηδέος ἔκθορεν ὕπνου·</div>
+<div class="trans">What time round splendour-kindled heavens the stars from east to west far-flashing wheel, and when man doth forget his toil, in that still hour Athena left the high mansions of the Blest, clothed her in shape of a maiden tender-fleshed, and came to ships and host. Over the head of brave Epeius stood she in his dream, and bade him build a Horse of tree: herself would labour in his labour, and herself stand by his side, to the work enkindling him. Hearing the Goddess' word, with a glad laugh leapt he from careless sleep:</div>
+<div class="lineno">114</div>
+<div class="text" lang="grc">ἔγνω δ' ἀθάνατον θεὸν ἄμβροτον· οὐδέ οἱ ἦτορ</div>
+<div class="lineno">115</div>
+<div class="text" lang="grc">ἄλλο παρ' ἐξ ὥρμαινε, νόον δ' ἔχεν αἰὲν ἐπ' ἔργῳ</div>
+<div class="lineno">116</div>
+<div class="text" lang="grc">θεσπεσίῳ· πινυτὴ δὲ περὶ φρένας ἤιε τέχνη.</div>
+<div class="lineno">117</div>
+<div class="text" lang="grc">Ἠὼς δ' ὁππόθ' ἵκανεν ἀπωσαμένη κνέφας ἠὺ</div>
+<div class="lineno">118</div>
+<div class="text" lang="grc">εἰς Ἔρεβος, χαροπὴ δὲ δι' ἠέρος ἤιεν αἴγλη,</div>
+<div class="lineno">119</div>
+<div class="text" lang="grc">δὴ τότε θεῖον ὄνειρον ἐν Ἀργείοισιν <a href="#comm_03">Ἐπειός</a>,</div> 
+<div class="lineno">120</div>
+<div class="text" lang="grc">ὡς ἴδεν, ὡς ἤκουσεν, ἐελδομένοισιν ἔειπεν·</div>
+<div class="lineno">121</div>
+<div class="text" lang="grc">οἳ δέ οἱ εἰσαΐοντες ἀπειρέσιον κεχάροντο.</div>
+<div class="trans">right well he knew the Immortal One celestial. Now his heart could hold no thought beside; his mind was fixed upon the wondrous work, and through his soul marched marshalled each device of craftsmanship. When rose the dawn, and thrust back kindly night to Erebus, and through the firmament streamed glad glory, then Epeius told his dream to eager Argives – all he saw and heard; and hearkening joyed they with exceeding joy.</div>
+
+<div class="lineno">122</div>
+<div class="text" lang="grc">Καὶ</a> τότ' ἄρ' <a href="#comm_23">Ἀτρέος υἷες</a> ἐς ἄγκεα τηλεθάοντα</div>
+<div class="lineno">123</div>
+<div class="text" lang="grc"><a href="#comm_43">Ἴδης</a> ὑψικόμοιο θοοὺς προέηκαν ἱκέσθαι</div>
+<div class="lineno">124</div>
+<div class="text" lang="grc"><a href="#comm_23">ἀνέρας</a>. Οἳ δ' <a href="#comm_24">ἐλάτῃσιν</a> ἐπιβρίσαντες ἀν' ὕλην</div>
+<div class="lineno">125</div>
+<div class="text" lang="grc"><a href="#comm_05">τάμνον</a> δένδρεα μακρά· περικτυπέοντο δὲ βῆσσαι</div>
+<div class="lineno">126</div>
+<div class="text" lang="grc">θεινομένων· δολιχαὶ δὲ κατ' οὔρεα μακρὰ κολῶναι</div>
+<div class="lineno">127</div>
+<div class="text" lang="grc">δεύοντ' ἐκ ξυλόχοιο· νάπη δ' ἀνεφαίνετο πᾶσα</div>
+<div class="lineno">128</div>
+<div class="text" lang="grc">θήρεσιν οὐκέτι τόσσον ἐπήρατος ὡς τὸ πάροιθε·</div>
+<div class="lineno">129</div>
+<div class="text" lang="grc">πρέμνα δ' ἀπαυαίνοντο βίην ποθέοντ' ἀνέμοιο.</div>
+<div class="trans">Straightway to tall-tressed Ida's leafy glades the sons of Atreus sent swift messengers. These laid the axe unto the forest-pines, and hewed the great trees: to their smiting rang the echoing glens. On those far-stretching hills all bare of undergrowth the high peaks rose: open their glades were, not, as in time past, haunted of beasts: there dry the tree-trunks rose wooing the winds.</div>
+<div class="lineno">130</div>
+<div class="text" lang="grc">Καὶ τὰ μὲν ἂρ <a href="#comm_25">πελέκεσσι</a> διατμήγοντες <a href="#comm_23">Ἀχαιοὶ</a></div>
+<div class="lineno">131</div>
+<div class="text" lang="grc">ἐσσυμένως φορέεσκον ἐπ' ᾐόνας Ἑλλησπόντου</div>
+<div class="lineno">132</div>
+<div class="text" lang="grc">οὔρεος ἐκ λασίοιο· μόγησε δὲ θυμὸς ἐπ' ἔργῳ</div>
+<div class="lineno">133</div>
+<div class="text" lang="grc"><a href="#comm_23">αἰζηῶν τε καὶ ἡμιόνων</a>. Πονέοντο δὲ <a href="#comm_23">λαοὶ</a></div>
+<div class="lineno">134</div>
+<div class="text" lang="grc">– ⏑ ⏑ ἄλλοθεν ἄλλος ὑποδρήσσοντες Ἐπειῷ·</div>
+<div class="lineno">135</div>
+<div class="text" lang="grc">οἳ μὲν γὰρ <a href="#comm_05">τέμνεσκον</a> <a href="#comm_26">ὑπ' ὀκριόεντι σιδήρῳ</a></div> 
+<div class="lineno">136</div>
+<div class="text" lang="grc">δούρατα καὶ σανίδας διεμέτρεον· οἳ δ' ἄρ' ἀπ' ὄζους</div>
+<div class="lineno">137</div>
+<div class="text" lang="grc">λείαινον <a href="#comm_25">πελέκεσσιν</a> ἔτ' ἀπρίστων ἀπὸ φιτρῶν·</div>
+<div class="trans">Even these the Achaeans hewed with axes, and in haste they bare them down from those shagged mountain heights to Hellespont's shores. Strained with a strenuous spirit at the work young men and mules; and all the people toiled each at his task obeying Epeius's hest. For with the keen steel some were hewing beams, some measuring planks, and some with axes lopped branches away from trunks as yet unsawn:</div>
+
+<div class="lineno">138</div>
+<div class="text" lang="grc">ἄλλος δ' ἄλλό τι ῥέζε πονεύμενος. Αὐτὰρ Ἐπειὸς</div>
+<div class="lineno">139</div>
+<div class="text" lang="grc">ἵππου <a href="#comm_30">δουρατέοιο</a> πόδας <a href="#comm_47">κάμεν</a>, αὐτὰρ ἔπειτα</div>
+<div class="lineno">140</div>
+<div class="text" lang="grc">νηδύα, τῇ δ' ἐφύπερθε <a href="#comm_14">συνήρμοσε</a> <a href="#comm_31">νῶτα καὶ ἰξὺν</a></div>
+<div class="lineno">141</div>
+<div class="text" lang="grc">ἐξόπιθεν, δειρὴν δὲ πάρος, <a href="#comm_32">καθύπερθε δὲ χαίτην</a></div>
+<div class="lineno">142</div>
+<div class="text" lang="grc"><a href="#comm_33">αὐχένος ὑψηλοῖο</a> καθήρμοσεν, <a href="#comm_27">ὡς ἐτεόν</a> περ</div>
+<div class="lineno">143</div>
+<div class="text" lang="grc">κινυμένην, λάσιον δὲ κάρη καὶ <a href="#comm_48">ἐύτριχον</a> οὐρήν,</div>
+<div class="lineno">144</div>
+<div class="text" lang="grc">οὔατα δ' ὀφθαλμούς τε διειδέας ἄλλά τε πάντα</div>
+<div class="lineno">145</div>
+<div class="text" lang="grc">οἷς ἐπικίνυται ἵππος. Ἀέξετο δ' <a href="#comm_28">ἱερὸν ἔργον</a></div>
+<div class="lineno">146</div>
+<div class="text" lang="grc"><a href="#comm_27">ὡς ἐτεὸν</a> ζώοντος, ἐπεὶ θεὸς ἀνέρι <a href="#comm_38">τέχνην</a></div>
+<div class="lineno">147</div>
+<div class="text" lang="grc">δῶκ' ἐρατήν. Τετέλεστο δ' ἐνὶ <a href="#comm_39">τρισὶν ἤμασι πάντα</a></div>
+<div class="lineno">148</div>
+<div class="text" lang="grc">Παλλάδος ἐννεσίῃσι· πολὺς δ' ἐπεγήθεε λαὸς</div>
+<div class="lineno">149</div>
+<div class="text" lang="grc">Ἀργείων, θαύμαζε δ' ὅπως ἐπὶ δούρατι θυμὸς</div>
+<div class="lineno">150</div>
+<div class="text" lang="grc">καὶ τάχος ἐκπεπότητο ποδῶν, χρεμέθοντι δ' ἐῴκει.</div>
+<div class="trans">each wrought his several work. Epeius first fashioned the feet of that great Horse of Wood: the belly next he shaped, and over this moulded the back and the great loins behind, the throat in front, and ridged the towering neck with waving mane: the crested head he wrought, the streaming tail, the ears, the lucent eyes – all that of lifelike horses have. So grew like a live thing that more than human work, for a God gave to a man that wondrous craft. And in three days, by Pallas's decree, finished was all. Rejoiced thereat the host of Argos, marvelling how the wood expressed mettle, and speed of foot – yea, seemed to neigh.</div>
+
+<div class="lineno">151</div>
+<div class="text" lang="grc">Καὶ τότε δῖος Ἐπειὸς ὑπὲρ <a href="#comm_42">μεγακήτεος</a> ἵππου</div>
+<div class="lineno">152</div>
+<div class="text" lang="grc">εὔχετ' ἐπ' ἀκαμάτῳ Τριτωνίδι χεῖρας ὀρέξας·</div>
+<div class="lineno">153</div>
+<div class="text" lang="grc">»Κλῦθι, θεὰ μεγάθυμε, σάου δ' ἐμὲ καὶ τεὸν ἵππον.»</div>
+<div class="lineno">154</div>
+<div class="text" lang="grc">Ὣς φάτο· τοῦ δ' ἐσάκουσε θεὰ πολύμητις Ἀθήνη,</div>
+<div class="lineno">155</div>
+<div class="text" lang="grc">καί ῥά οἱ ἔργον ἔτευξεν ἐπιχθονίοισιν ἀγητὸν</div>
+<div class="lineno">156</div>
+<div class="text" lang="grc">πᾶσιν ὅσοι μιν ἴδοντο καὶ οἳ μετόπισθε πύθοντο.</div>
+<div class="trans">Godlike Epeius then uplifted hands to Pallas, and for that huge Horse he prayed: "Hear, great-souled Goddess: bless thine Horse and me!" He spake: Athena rich in counsel heard, and made his work a marvel to all men which saw, or heard its fame in days to be.</div>
+
+</div>
+
+
+<div id="commentaryHolder">
+
+<div id="comm_00">
+Test</div>
+
+<div id="comm_02">
+
+<h2>Note on <span lang="grc">βουλῇσι θεῆς ὑποεργὸς</a></h2>
+
+<p>Epeus does not act alone or exclusively by his own will. He is the goddess’ <span lang="grc">ὑποεργός</span> (57), her servant or assistant, an adjective only attested otherwise in A.R. <a href="http://cts.perseids.org/read/greekLit/tlg0001/tlg001/perseus-grc2/1.226">1.226</a>, to which Triphiodorus seems clearly alluding, as it refers to another process of construction under divine patronage: the building of the Argo.</p>
+<p>The configuration of the dative absolute <span lang="grc">βουλῇσι(ν) </span> with a genitive of a deity’s name or some form of <span lang="grc">θεὸς</span> or its synonyms is far from uncommon in epic poetry. This instance here could be considered a re-working of Hes. <i>Th.</i> <a href="https://cts.perseids.org/read/greekLit/tlg0020/tlg001/perseus-grc2/960">960</a> and <a href="https://cts.perseids.org/read/greekLit/tlg0020/tlg001/perseus-grc2/993">993</a>, which refer to the marriage of Aeetes and Idyia, resulting in Medea’s birth and her later abduction by Jason.</p>
+
+</div>
+
+<div id="comm_03">
+
+<h2>Note on <span lang="grc">Ἐπειὸς</a></h2>
+
+<p>Already on the first line (57), Epeus is identified as the maker of the Horse. This introduction reads as a variation of <i>Od</i>. <a href="http://cts.perseids.org/read/greekLit/tlg0012/tlg002/perseus-grc2/8.492-8.493">8.492-3</a>, including a version of the etymological wordplay between the verb and the subject. It has to be noted that <span lang="grc">ἐποίει</span> (58) is used in epic only twice apart from here, both times in the <i>Odyssey</i> (<a href="http://cts.perseids.org/read/greekLit/tlg0012/tlg002/perseus-grc2/19.34">19.34</a> and <a href="http://cts.perseids.org/read/greekLit/tlg0012/tlg002/perseus-grc2/23.178">23.178</a>). Both occurrences are contextually and semantically related to Triph. 58, as they refer to a glow produced by Athene and to a construction attributed to Odysseus; any instance of intertextuality alluding to Athene’s protection of Odysseus and his family or to Odysseus as a handicraftsman can be considered to enforce Epeus’ presence in the narrative up to the point of Odysseus’ substitution by him. The verb, as well as those which follow, is in the third person singular: in Triphiodorus, as Miguélez-Cavero notes, “Epeius appears to be working on his own with Athena’s inspiration, whereas in the <i>Posthomerica</i> he directs the work of the army, with the horse presented as a collective enterprise” (2013: 166).</p>
+
+</div>
+
+<div id="comm_04">
+
+<h2>Note on <span lang="grc">ἐχθρὸν ἄγαλμα πελώριον ἵππον</a></h2>
+
+<p>The Horse is introduced with an intricate description to an appropriately polysemous effect. It is <span lang="grc">πελώριος</span> (58), gigantic and huge (<a href="http://www.perseus.tufts.edu/hopper/text?doc=Perseus%3Atext%3A1999.04.0057%3Aentry%3Dpelw%2Frios">LSJ</a>) in size, and also warlike and threatening, as this is an adjective defining heroes on the battlefield, such as Ajax (<i>Il.</i> <a href="https://cts.perseids.org/read/greekLit/tlg0012/tlg001/perseus-grc2/3.229">3.229</a>), Hector (<a href="https://cts.perseids.org/read/greekLit/tlg0012/tlg001/perseus-grc2/11.820">11.820</a>) and Achilles (<a href="https://cts.perseids.org/read/greekLit/tlg0012/tlg001/perseus-grc2/21.527">21.527</a>), or the armour and weapons they are carrying (for Rhesus at <a href="https://cts.perseids.org/read/greekLit/tlg0012/tlg001/perseus-grc2/10.439">10.439</a>). It is also applied to Polyphemus, the first time that Odysseus and his companions lay eyes on him (<i>Od.</i> <a href="https://cts.perseids.org/read/greekLit/tlg0012/tlg002/perseus-grc2/9.187-9.190">9.187-190</a>), as well as a horse sent by Poseidon as a portent at A.R. <a href="https://cts.perseids.org/read/greekLit/tlg0001/tlg001/perseus-grc2/4.1365-4.1366">4.1365-6</a>. It would be reasonable to consider that Triphiodorus is alluding to this particular instance, as Epeus’ creation and Poseidon’s omen share the referent of the same species, the adjective <span lang="grc">μετήορος</span> is also used at Triph. 67 and both representations belong to the realm of the supernatural and make an equally strong impression.</p>
+<p>The Horse is also an <span lang="grc">ἐχθρὸν ἄγαλμα</span> (58). The noun refers to the Wooden Horse, also at <i>Od.</i> <a href="https://cts.perseids.org/read/greekLit/tlg0012/tlg002/perseus-grc2/8.509">8.509</a>, during the Trojan debate on how to deal with it. Its meaning has evolved from its Homeric origins to one particularly pertaining to ekphrasis (<a href="http://www.perseus.tufts.edu/hopper/text?doc=Perseus%3Atext%3A1999.04.0057%3Aentry%3Da)%2Fgalma">LSJ</a>).</i></p>
+
+</div>
+
+<div id="comm_05">
+
+<h2>Note on <span lang="grc">τέμνετο δοῦρα</span></h2>
+
+<p>The phrase for the woodcutting process alludes to the corresponding stage of Odysseus’ building of the raft (<i>Od.</i> <a href="http://cts.perseids.org/read/greekLit/tlg0012/tlg002/perseus-grc2/5.243">5.243</a>). Triphiodorus’ version, as opposed to Quintus (12.125, 12.135) leaves unmentioned a collective involvement. The third person singular assigns the whole effort to Epeus himself, which should not be dismissed as unreasonable, due to the supernatural premise of the whole enterprise.</p>
+
+</div>	
+
+<div id="comm_43">
+
+<h2>Note on <span lang="grc">Ἴδης</span></h2>
+
+<p>Triphiodorus specifies the geographical provenance of timber, which is none other than <a href="https://pleiades.stoa.org/places/550592">Mount Ida</a>, same as in Quintus, and explicitly connects the woodcutting which leads the war towards its conclusion with the one that triggered its beginning, as he mentions Phereclus by name and his role in the tradition.</p>
+
+</div>
+
+<div id="comm_44">
+
+<h2>Note on <span lang="grc">πήματος ἀρχήν</span></h2>
+
+<p>By adopting this term, Triphiodorus alludes to <i>Od.</i> <a href="http://cts.perseids.org/read/greekLit/tlg0012/tlg002/perseus-grc2/8.81">8.81</a>, where the exact same collocation occurs in the same <i>sedes</i> and in a narrative context referring to the beginnings of the Trojan War, as part of Demodocus’ indirectly rendered song.</p>
+
+</div>
+
+<div id="comm_06">
+
+<h2>Note on Triph. 63-4</h2> 
+
+<p>A simile, likening the work of Epeus with shipbuilding carpentry alludes to <i>Od.</i> <a href="http://cts.perseids.org/read/greekLit/tlg0012/tlg002/perseus-grc2/5.249-5.251">5.249-251</a>, from the familiar passage of Odysseus building his raft. An array of verbal details, either identical or of a broader similarity displays an extremely close relationship. According to Miguélez-Cavero, "the comparison with the work of the shipwright reshapes" (2013: 170) <i>Il.</i> <a href="https://cts.perseids.org/read/greekLit/tlg0012/tlg001/perseus-grc2/15.410-15.412">15.410-2</a>, where a balanced and inconclusive battle is compared to a carpenter’s skilfulness to keep a straight line. His art can only be divine in inspiration and Athene its source, as is also the case with Epeus. This possible double allusion to Homer directs the reader’s imagination to visualise the Horse as a ship, in the sense that it is a man-made construction, a means of transportation and a hollow wooden structure carrying men. </p>
+
+</div>
+
+<div id="comm_07">
+
+<h2>Note on <span lang="grc">ποίει</span></h2>
+
+<p>Αn imperfect emphatically repeated throughout the Shield of Achilles, always at first metrical position in line, as in <i>Il.</i> <a href="https://cts.perseids.org/read/greekLit/tlg0012/tlg001/perseus-grc2/18.478-18.482">18.478-82</a>, at the very beginning of the process, same as here. It is also applied to the construction of the raft (<i>Od.</i> <a href="http://cts.perseids.org/read/greekLit/tlg0012/tlg002/perseus-grc2/5.252-5.256">5.252-6</a>), attested twice in each case, in the <cite>Iliad</cite> for the whole shield and its decorations, and in the <cite>Odyssey</cite> for the deck and the mast. Triphiodorus’ repetition of this pattern encourages us to identify an allusion, which frames the passage and writes it into the tradition it belongs.</p>
+
+</div>
+
+<div id="comm_01">
+
+<h2>Note on <span lang="grc">ἔπηξε</span></h2>
+
+<p>This verb type, aorist of <span lang="grc">πήγνυμι</span> (<a href="http://www.perseus.tufts.edu/hopper/text?doc=ph%2Fgnumi&fromdoc=Perseus%3Atext%3A1999.04.0057">LSJ</a>) is applied to the fixing of the neck on the breast. Its infinitive is used for Odysseus’ raft, as Calypso announces to him the gods’ verdict and offers advice (<i>Od.</i> <a href="http://cts.perseids.org/read/greekLit/tlg0012/tlg002/perseus-grc2/5.162-5.164">5.162-4</a>).</p>
+
+</div>
+
+<div id="comm_45">
+
+<h2>Note on <span lang="grc">γλαφυροῖσιν</span></h2>
+
+<p>The Horse’s breast is hollow or curved, an adjective predominantly applied to ships (<i>Il.</i> 40x, <i>Od.</i> 23x, A.R. 3x), but also caves (<i>Il.</i> 2x, <i>Od.</i> 13x, Hes. <i>Th.</i> 1x), with a semantic content inclusive of both man-made objects and features of the landscape.</p>
+
+</div>
+
+<div id="comm_08">
+
+<h2>Note on <span lang="grc">ξανθῷ ... χρυσῷ</span></h2>
+<p>
+
+One of the instances where Triphiodorus combines the material and its colour.  A blonde-maned horse is already mentioned in Homer (<i>Il.</i> <a href="https://cts.perseids.org/read/greekLit/tlg0012/tlg001/perseus-grc2/9.407">9.407</a> and <a href="https://cts.perseids.org/read/greekLit/tlg0012/tlg001/perseus-grc2/11.680">11.680</a>) and a rich mane an essential element of a proper and healthy appearance  (<span lang="grc">καλλίτριχες ἵπποι</span>, <i>Il.</i> 12x, <i>Od.</i> 3x).
+
+</p>
+
+</div>
+
+<div id="comm_09">
+
+<h2> Note on <span lang="grc">ἐπικυμαίνουσα μετήορος</span></h2>
+
+<p>An intriguing phrasal collocation, probably alluding to A.R. <a href="https://cts.perseids.org/read/greekLit/tlg0001/tlg001/perseus-grc2/4.1365-4.1366">4.1365-6</a>. Apart from the common use of <span lang="grc">μετήορος</span> (4.1366),  the two passages also share the golden colour of the mane (<span lang="grc">χρυσέῃσι … χαίταις</span>) and the same noun for the neck (67 <span lang="grc">αὐχένι</span> ~ 4.1366 <span lang="grc">αὐχένα</span>).</p>
+<p>The context in Apollonius is of a divine intervention, as the horse mentioned is a sea creature, unfastened by Poseidon from his chariot to lead the Argonauts from dry land to a safe maritime journey. Following a prophecy that Jason had received from the daughters and guardians of Libya,  Peleus provides an explanation (A.R. <a href="https://cts.perseids.org/read/greekLit/tlg0001/tlg001/perseus-grc2/4.1372-4.1374">4.1372-4</a>). The analogies are evident: both the Argonauts and the Achaeans find themselves within a man-made structure, a wooden womb, out of which the fruitful completion of their respective endeavours will be delivered. Triphiodorus’ Horse is simultaneously alluding to a supernatural apparition of its own species and, once more, to a ship.</p>
+<p>The semantic combination of pregnancy and maritime vocabulary is reiterated with the participle <span lang="grc">ἐπικυμαίνουσα</span>. Αs a derivative of <span lang="grc">κῦμα</span>, it may refer to "anything swollen as if pregnant" (<a href="http://www.perseus.tufts.edu/hopper/text?doc=LSJ+ku%3Dma&fromdoc=Perseus%3Atext%3A1999.04.0057">LSJ</a>). Its attestation here is the only one extant in epic poetry, but an additional occurrence is provided in imperial prose (Plu. <i>Alex.</i> <a href="https://cts.perseids.org/read/greekLit/tlg0007/tlg047/perseus-grc2/33.2">33.2-4</a>). What is described here is a Macedonian attack during the battle of Gaugamela: the cavalry charges and, closely behind, the infantry “floods” the battlefield. We seem to be invited to visualise the horses galloping, their manes fluttering, and the soldiers dashing along or to recognise the analogies this image has with the representation of the Wooden Horse, not to mention that Alexander’s expedition is a historical chapter of the same East-West rivalry initiated with the Trojan War. 
+
+</div>
+
+<div id="comm_10">
+
+<h2>Note on <span lang="grc">αὐχένι κυρτῷ</span></h2>
+
+<p>The "arched neck" is mentioned by Xenophon (<i>Eq.</i> <a href="https://cts.perseids.org/read/greekLit/tlg0032/tlg013/perseus-grc2/10.3-10.4">10.3-4</a>) as a natural position for a horse, a posture which allows it to be at ease and enjoy itself. By ascribing the living animal’s attributes to its artistic representation, Triphiodorus blurs the lines between the two, seems to acknowledge the corresponding technical and practical aspects and adds to the realism and vividness of his description.</p>
+
+</div>
+
+<div id="comm_46">
+
+<h2>Note on <span lang="grc">λιθώπεας</span></h2>
+
+<p>An <i>hapax</i> compound epithet whose second component "is a synonym of the noun to which the epithet refers" (Giangrande 1973: 109) and defines their material as stone. As specified straight away, they are made of gems and consist of two circles of beryl and amethyst  (70). This line’s syntactic configuration is open to interpretations. We could understand it to signify that each eye is a circle made of either material or of the two materials combined or that, instead, each one consists of two circles, one made of each material, presumably representing the iris and the sclera.</p>
+
+</div>
+
+<div id="comm_12">
+
+<h2>Note on Triph. 76-77</h2>
+
+<p>Two distinct terms are applied to the two different types of air, <span lang="grc">παλίρροον ἆσθμα</span> (76) and <span lang="grc">φυσίζοος … ἀήρ</span> (77). The literal meaning of the adjective <span lang="grc">παλίρροον</span> refers to the ebb and flow of the tide and is only attested, as far as epic is concerned, in Opp. <cite>H.</cite> <a href="http://cts.perseids.org/read/greekLit/tlg0023/tlg001/perseus-grc2/2">2.398</a>, a biological observation set in the context of an octopus’ lethal assault on a crayfish.</p>
+<p>The noun <span lang="grc">ἆσθμα</span>, much like the medical condition named after it, usually stands for short breath and panting from toil or, in a general sense, breath and breathing (<a href="http://www.perseus.tufts.edu/hopper/text?doc=LSJ+a%29%2Fsqma&fromdoc=Perseus%3Atext%3A1999.04.0057">LSJ</a>). In <cite>H.</cite> <a href="http://cts.perseids.org/read/greekLit/tlg0023/tlg001/perseus-grc2/5">5.183-7</a> <span lang="grc">ἆσθμα</span> is used of a breathing whale likened to a horse which has laboured much. Therefore, a noun used in Oppian for the vehicle of the simile is applied here to an image within the narrative.: the object of description itself. Furthermore, a feature of the living being is attributed to its inanimate representation, contributing to the effect of its lifelikeness.</p>
+
+</div>
+
+<div id="comm_14">
+
+<h2>Note on <span lang="grc">συνήρμοσε</span></h2>
+
+<p>This part, referring to the back, the flanks and the spine, corresponds with the respective passage in Quintus (12.140), with the common verbal elements of the verb <span lang="grc">συνήρμοσε</span> and the noun <span lang "grc">νῶτα</span>.</p>
+
+</div>
+
+<div id="comm_11">
+
+<h2>Note on <span lang="grc">οὐ ... ἀχαλκέες</span></h2>
+
+<p>Τhe description of the hooves provides specifications on the material used: they are "not without bronze".  This is a <i>hapax</i>, presumably a variation on tragic parallels, such as <span lang="grc">ἀχαλκεύτοις</span> (A. <cite>Ch.</cite> <a href="https://cts.perseids.org/read/greekLit/tlg0085/tlg006/opp-grc3/493">493</a>) and ἄχαλκος (S. <cite>OT</cite> <a href="https://cts.perseids.org/read/greekLit/tlg0011/tlg004/perseus-grc2/190">190</a>), recast here for metrical reasons.</p>
+
+</div>
+
+<div id="comm_19">
+
+<h2>Note on <span lang="grc">ἀργυροδίνεϊ</span></h2>
+
+<p>A surprising choice, extant in epic poetry only with a river’s name (<i>Il.</i> <a href="http://cts.perseids.org/read/greekLit/tlg0012/tlg001/perseus-grc2/2.753">2.753</a>, Hes. <i>Th.</i> <a href="https://cts.perseids.org/read/greekLit/tlg0020/tlg001/perseus-grc2/340">340</a>) or with the noun ποταμός (<i>Il.</i> <a href="http://cts.perseids.org/read/greekLit/tlg0012/tlg001/perseus-grc2/21.8">21.8</a>). Miguélez-Cavero presumes that Triphiodorus is "reinterpreting it after the verb δινεύω 'whirl', 'spin round', to smarten the ivory and bronze inlays with a silver whirl" (2013: 185).</p>
+
+</div>
+
+<div id="comm_20">
+
+<h2>Note on Triph. 103-5</h2>
+
+<p>In this short span of text, the elements included are the effect of the Horse, which glows (103 <span lang="grc">ἐξήστραπτε</span>), the emotions it provokes, fear and admiration for its beauty (103 <span lang="grc">φόβῳ καὶ κάλλεϊ</span>), a specification of its size (104 <span lang="grc">εὐρύς θ’ ὑψηλός τε</span>) and, once more, an implication of its lifelikeness (105 <span lang="grc"εἴ μιν ζωὸν ἔτετμεν</span>).</p>
+
+</div>
+
+<div id="comm_13">
+
+<h2>Note on <span lang="grc">ἐξήστραπτε</span></h2>
+
+<p>The glow emanating from an object and the emotions it arouses to those who observe it are two elements already attested in the <cite>Iliad</cite>, in the context of Achilles’ armour, the resulting product of the archetypical ekphrastic scene, and the reaction it provokes, as it comes to plain view for the first time: it frightens the Myrmidons and gives joy to Achilles himself (<i>Il.</i> <a href="http://cts.perseids.org/read/greekLit/tlg0012/tlg001/perseus-grc2/19.12-19.19">19.12-9</a>).</p>
+
+</div>
+
+<div id="comm_15">
+
+<h2>Note on <span lang="grc">εὐρύς θ' ὑψηλός τε</span></h2>
+
+<p>The wideness and height of the Horse is described in the same words with which Achilles asks his companions tο expand and reface Patroclus’ grave in the future (<i>Il.</i> <a href="http://cts.perseids.org/read/greekLit/tlg0012/tlg001/perseus-grc2/23.247">23.247</a>)</p>
+
+</div>
+
+<div id="comm_16">
+
+<h2>Note on <span lang="grc">εἴ μιν ζωὸν ἔτετμεν</span></h2>
+
+<p>The wording for the lifelikeness is also alluding to Homer (<i>Od.</i> <a href="http://cts.perseids.org/read/greekLit/tlg0012/tlg002/perseus-grc2/3.256">3.256</a>), although in a quite dissimilar narrative context.</p>
+
+</div>
+
+<div id="comm_21">
+
+<h2>Note on the dream sequence (QS XII 104-121)</h2>
+
+<p>As Campbell notes, this is a typical dream-sequence, which "leans heavily on Homeric prototypes" and "incorporates many of the features of set routines" (1981: 37). Athene is presented to leave Olympus, travel to the Achaean camp, stand over the head of Epeus and deliver her message to him. He immediately wakes up and reacts to the dream; as soon as day breaks, he informs the rest of the Argives and the process of the construction begins.  The corresponding introduction in Triphiodorus also refers to the element of divine intervention, but does so in a remarkably laconic manner.</p>
+
+</div>
+
+<div id="comm_17">
+
+<h2>Note on <span lang="grc">ἀρηιφίλου</span></h2>
+
+<p>An adjective attested in the Iliad (25x), in most cases used to define Menelaus, as in <a href="http://cts.perseids.org/read/greekLit/tlg0012/tlg001/perseus-grc2/4.13">4.13</a>. We would be inclined to consider the application of an adjective denoting military prowess to a hero predominantly associated with handicraft and similar endeavours surprising and uncharacteristic. If we follow Campbell’s interpretation on this point, this is related with Epeus’ upgraded role in the episode and his quintessential contribution to the war effort, albeit without his own military skills. Campbell also presumes that this must have been "his original role in the saga" (1981: 41).</p>
+
+</div>
+
+<div id="comm_18">
+
+<h2>Note on <span lang="grc">τεῦξαι</span></h2>
+
+<p>The verb type used for the act of construction is the aorist infinitive <span lang="grc">τεῦξαι</span>. We take note of its occurrence in Pindar (<cite>O.</cite> <a href="https://cts.perseids.org/read/greekLit/tlg0033/tlg001/perseus-grc2/8.32-8.36">8.32-6</a>). Not only does the passage refer to the walls of Troy and the circumstances of their making, but it also connects the fortification’s foundation with its siege and destruction. In his presumably original narrative,  Pindar has Apollo and Poseidon enlist the help of Aeacus with building the walls, so that the part made by him, as a mortal, would be vulnerable to attack, eventuating the fall of the city. Furthermore, Apollo foretells that Troy will be taken by none other than the first and fourth generations of Aeacus’ own descendants (<cite>O.</cite> <a href="https://cts.perseids.org/read/greekLit/tlg0033/tlg001/perseus-grc2/8.42-8.46">8.42-6</a>). Through their respective fathers, Achilles and Panopeus, and grandfathers, Peleus and Phocus, the latter generation consists of Neoptolemus and Epeus. The narrative context in Pindar, as well as the rarity of this word type, allow us to consider that τεῦξαι is pregnant with meaning. Its use by Quintus seems to acknowledge and mirror the fact that it has been already associated with both the construction and the destruction of the walls of Troy, involving members of the same family with a degree of divine patronage, as Apollo’s prophecy is fulfilled at the instigation of Athene.</p>
+
+</div>
+
+<div id="comm_22">
+
+<h2>Note on <span lang="grc">δούριον ἵππον</span></h2>
+	
+<p>Not attested in Homer, this phrasing is presumably traced back to the Epic Cycle (Campbell 1981: 42), and its only extant hexameter occurrence, earlier than Quintus, is [Lucill.] <i>AP</i> <a href="http://www.perseus.tufts.edu/hopper/text?doc=Anth.+Gr.+11.259.3-4&fromdoc=Perseus%3Atext%3A2008.01.0475">11.259.3-4</a>, a satirical epigram on the addressee’s proverbially heavy horse.</p>
+
+</div>
+
+<div id="comm_23">
+
+<h2>Note on the woodcutting scene (QS XII 122-137)</h2>
+
+<p>The passage which details how the raw materials were acquired, transported and processed describes this throughout as a collective endeavour. Those responsible, sent out by the sons of Atreus are "men … in haste" (12.122-4). After completing their woodcutting task, they carry the timber back to the Achaean camp and perform any carpentry necessary prior to the construction itself. Again, the acting subject is a plural one (12.130, 12.133) and the effort is not exclusive to the human species, as the animals’ contribution does not go unmentioned (12.133).</p>
+
+</div>
+
+<div id="comm_24">
+
+<h2>Note on <span lang="grc">ἐλάτῃσιν</span></h2>
+
+<p>The specific type of wood cut down and used is identified as silver fir (12.124). What survives of the tradition is either silent or inconsistent regarding this detail. Euripides refers to pine (<cite>Tr.</cite> <a href="https://cts.perseids.org/read/greekLit/tlg0006/tlg011/perseus-grc2/534">534</a>) and Virgil does mention fir (<cite>Aen.</cite> <a href="https://cts.perseids.org/read/latinLit/phi0690/phi003/perseus-lat2/2.16">2.16</a>), but among a variety of other types, as he describes a structure consisting of "interwoven timbers".</p>
+<p>This is the sole extant epic instance of the dative plural in a narrative context of woodcutting. Moreover, the majority of its occurrences appears against a maritime setting, either of travel or of fishing,  where the word assumes the meaning of "oars" instead (<a href="http://www.perseus.tufts.edu/hopper/text?doc=LSJ+e%29la%2Fth&fromdoc=Perseus%3Atext%3A1999.04.0057">LSJ</a> II). The word’s ambiguity and the higher frequency of its alternative meaning allow us to propose that this, in fact, is an instance suggesting a semantic underlayer explicitly connected to the woodcutting scene which resulted to the construction of Paris’ ships.</p>
+
+</div>
+
+<div id="comm_25">
+
+<h2>Note on πελέκεσσι(ν)</h2>
+
+<p>The tools used by the Achaeans are identified as "axes". In epic poetry, this type is either understood as a weapon or applied to a woodcutting simile within a battle scene.</p>
+
+</div>
+
+<div id="comm_26">
+
+<h2>Note on <span lang="grc">ὑπ' ὀκριόεντι σιδήρῳ</h2>
+
+<p><p>The other tool draws its name from the material it is made of. As it is normal and unmarked for <span lang="grc">σίδηρος</span> to stand for "anything made of iron", including tools and weapons (<a href="http://www.perseus.tufts.edu/hopper/text?doc=LSJ+si%2Fdhros&fromdoc=Perseus%3Atext%3A1999.04.0057">LSJ</a> II), we focus instead on the adjective <span lang="grc">ὀκριόεις</span>, which signifies anything pointed, prominent or jagged. In Homer, we always find it attached to a variety of nouns denoting a rock as an instrument of war, when it is being hurled towards a (usually human) target.  Apollonius attributes it instead to natural elements of the landscape (3x) and Oppian to animals, reasonably so due to his poem’s subject matter.  In Quintus, it primarily reverts to its Homeric use as a weapon, and this here is its only attestation as a tool of handiwork, with a powerful military undercurrent serving to imply the eventual purpose of this endeavour.</p>
+A series of actions in this segment is described with an array of corresponding verbs or phrasings, which could be divided into two categories, those providing generic terms for physical toil and those denoting a specific task.
+</p>
+
+</div>
+
+<div id="comm_28">
+
+<h2>Note on <span lang="grc">ἱερὸν ἔργον</span></h2>
+
+<p>Particular emphasis is given to the work’s divine patronage. Based on the occurrence of the verb <span lang="grc">ἀέξετο</span>, Campbell (1981: 53) sees this phrasing as a blending of two Homeric passages (<cite>Il.</cite> <a href="http://cts.perseids.org/read/greekLit/tlg0012/tlg001/perseus-grc2/8.66">8.66</a> and <cite>Od.</cite> <a href="http://cts.perseids.org/read/greekLit/tlg0012/tlg002/perseus-grc2/14.65-14.66">14.65-6</a>, with the latter also containing an invocation of divine protection.</p>
+
+</div>
+
+<div id="comm_47">
+
+<h2>Note on <span lang="grc">κάμεν</span></h2>
+
+<p>The verb <span lang="grc">κάμεν</span> is part of the conventional epic diction, usually having to do with a god-made artifact or one supported by divine intervention. Examples include creations by Hephaestus, among which the "bronze-hooved bulls", made for Aeetes, king of Colchis, display a certain level of verbal proximity, which could qualify as a possible allusion (A.R. <a href="https://cts.perseids.org/read/greekLit/tlg0001/tlg001/perseus-grc2/3.230">3.230</a>).</p> 
+<p>The verb is also applied to creations by Athene, such as a robe, woven by herself (<cite>Il.</cite> <a href="http://cts.perseids.org/read/greekLit/tlg0012/tlg001/perseus-grc2/5.734-5.735">5.734-5</a>, as she removes it and puts on military garments, and also her involvement in the building of Argo (A.R. <a href="https://cts.perseids.org/read/greekLit/tlg0001/tlg001/perseus-grc2/1.111-1.112">1.111-2</a>).</p>
+<p>Especially in Quintus, the type <span lang="grc">κάμε(ν)</span> does not only define toil or labour, but also the ensuing physical exhaustion. This here, however, is the unique extant epic occurrence where it is applied to the beginning of a process and not its completion, as in Triph. 99.</p>
+
+</p>
+
+</div>
+
+<div id="comm_30">
+
+<h2>Note on <span lang="grc">δουρατέοιο</span></h2>
+
+<p>The term used for the Horse, instead of the variation <span lang="grc">δούριον</span> (12.110), is a reversion to the traditional Homeric epithet (<cite>Od.</cite> <a href="http://cts.perseids.org/read/greekLit/tlg0012/tlg002/perseus-grc2/8.493">8.493</a> and <cite>Od.</cite> <a href="http://cts.perseids.org/read/greekLit/tlg0012/tlg002/perseus-grc2/8.512">8.512</a>).</p>
+
+</div>
+
+<div id="comm_31">
+
+<h2>Note on <span lang="grc">νῶτα καὶ ἰξὺν</span></h2>
+
+<p>The phrasing for the back and the hindquarters seems to be borrowed from the Argonautica, where a very similar combination is occurring twice (<a href="http://cts.perseids.org/read/greekLit/tlg0001/tlg001/perseus-grc2/4.1348-4.1349">4.1348-9</a> and <a href="http://cts.perseids.org/read/greekLit/tlg0001/tlg001/perseus-grc2/4.1610-4.1612">4.1610-2</a>). In both those instances, the narrative context presents significant analogies, as the words form part of an ordered description of body parts, listed on the occasion of a decisive divine intervention in favour of the Argonauts by, respectively, the goddesses named Libya’s guardians and daughters (A.R. <a href="http://cts.perseids.org/read/greekLit/tlg0001/tlg001/perseus-grc2/4.1309">4.1309</a>) and the maritime deity of Triton.</p>
+
+</div>
+
+<div id="comm_32">
+
+<h2>Note on <span lang="grc">καθύπερθε δὲ χαίτην</span></h2>
+
+<p>The phrasing for the mane is undeniably modelled after Od. <a href="http://cts.perseids.org/read/greekLit/tlg0012/tlg002/perseus-grc2/4.149-4.150">4.149-50</a>. Not only are these lines, once more, a structured listing of body parts, spoken by Menelaus, as he describes the features of Odysseus, to trace their similarity with Telemachus who stands before him and Helen, they also precede, in close proximity, the narration of the Wooden Horse scheme.</p>
+
+</div>
+
+<div id="comm_33">
+
+<h2>Note on <span lang="grc">αὐχένος ὑψηλοῖο</span></h2>
+
+<p>The mane is attached to a "towering neck", with a genitive also found as part of the ordered description at A.R. (<a href="http://cts.perseids.org/read/greekLit/tlg0001/tlg001/perseus-grc2/4.1349">4.1349</a>) and towards the completion of the corresponding passage in Triphiodorus (95), where, as noted by Campbell (1981: 53), "the horse as a whole is labelled ὑψηλός" (104).</p>
+
+</div>
+
+<div id="comm_27">
+
+<h2>Note on <span lang="grc">ὡς ἐτεόν</span></h2>
+
+<p>Essential to the text as an ekphrasis and to the Horse as an object of description is the twice mentioned attribute of lifelikeness, for the movement of the mane and for the whole structure. In both instances, the adjective (<a href="http://www.perseus.tufts.edu/hopper/text?doc=LSJ+e%29teo%2Fs&fromdoc=Perseus%3Atext%3A1999.04.0057">LSJ</a>) is followed by a participle, in a figure of speech presumably borrowed from the <i>Argonautica</i> where Phrixus is depicted on the imagery displayed on Jason’s cloak (<a href="https://cts.perseids.org/read/greekLit/tlg0001/tlg001/perseus-grc2/1.763-1.764">1.763-4</a>).</p>
+
+</div>
+
+<div id="comm_38">
+
+<h2>Note on <span lang="grc">τέχνην</span></h2>
+
+<p>The artifact’s sanctity and lifelikeness are both attributed to the maker’s skill being a god-given gift. The divine provenance of aptitudes and capabilities is certainly not an uncommon concept, as shown, for instance, at Polydamas’ speech to Hector (<cite>Il.</cite> <a href="http://cts.perseids.org/read/greekLit/tlg0012/tlg001/perseus-grc2/13.730-13.733">13.730-3</a>, or regarding the art of Demodocus (<cite>Od.</cite> <a href="http://cts.perseids.org/read/greekLit/tlg0012/tlg002/perseus-grc2/8.43-8.45">8.43-5</a>), just before he proceeds to sing about the scheme of the Wooden Horse, providing us essential insights into its afterlife.</p>
+
+</div>
+
+<div id="comm_39">
+
+<h2>Note on <span lang="grc">τρισὶν ἤμασι πάντα</span></h2>
+
+<p>The supernatural support impacts on the rapidity of the whole process, which is completed in a mere three days. This is, as Campbell notes, "our only estimate of work-time" (1981: 54). The phrasing probably alludes to <cite>Od.</cite> <a href="http://cts.perseids.org/read/greekLit/tlg0012/tlg002/perseus-grc2/5.262">5.262</a>, which refers to the completion of Odysseus’ raft.</p>
+
+</div>
+
+<div id="comm_42">
+
+<h2>Note on <span lang="grc">μεγακήτεος</span></h2>
+
+<p>A composite epithet, used in the <i>Iliad</i> for a ship (as in <a href="http://cts.perseids.org/read/greekLit/tlg0012/tlg001/perseus-grc2/8.222">8.222</a>) or a sea animal, namely a dolphin (<a href="http://cts.perseids.org/read/greekLit/tlg0012/tlg001/perseus-grc2/21.22">21.22</a>). As a possessive compound, it also qualifies the sea, as in A.R. <a href="https://cts.perseids.org/read/greekLit/tlg0001/tlg001/perseus-grc2/4.318">4.318</a>. Therefore, it conveys the Horse’s massiveness, the cargo it contains, the threat it poses.</p>
+
+</div>
+
+  <div id="comm_48">
+  
+  <h2>Note on <span lang="grc">ἐύτριχον</span></h2>
+  
+  <p>An adjective drawn from the Homeric formula <span lang="grc">ἐΰτριχας … ἵππους</span> (as in <cite>Il.</cite> <a href="http://cts.perseids.org/read/greekLit/tlg0012/tlg001/perseus-grc2/23.13">23.13</a>), in its only epic occurrence outside the <cite>Iliad</cite>.</p>
+  
+  </div>
+
+</div>
+
+<div id="overlay"><div id="overlayContent">Some content here</div><div id="overlayClose">[<a href="#" onclick="$('#overlay').fadeOut();">Close</a>]</div></div>
+
+</body>
+</html>
